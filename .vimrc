@@ -5,13 +5,11 @@ set shell=sh
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'rust-lang/rust.vim'
 Plugin 'ycm-core/YouCompleteMe' 
- 
  
 Plugin 'preservim/nerdtree'|
             \ Plugin 'Xuyuanp/nerdtree-git-plugin' |
-			\ Plugin 'ryanoasis/vim-devicons'
 
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 " 非 github 仓库的插件"
@@ -24,7 +22,7 @@ source ~/.vim/settings.vim
 
 """""新文件标题
 "新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
+""autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
 ""定义函数SetTitle，自动插入文件头 
 func SetTitle() 
 	"如果文件类型为.sh文件 
@@ -56,6 +54,9 @@ func SetTitle()
 	"新建文件后，自动定位到文件末尾
 endfunc 
 autocmd BufNewFile * normal G
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"键盘命令
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
@@ -186,6 +187,8 @@ set smartindent
 :inoremap ] <c-r>=ClosePair(']')<CR>
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
+"":inoremap < <><ESC>i
+:inoremap > <c-r>=ClosePair('>')<CR>
 function! ClosePair(char)
 	if getline('.')[col('.') - 1] == a:char
 		return "\<Right>"
