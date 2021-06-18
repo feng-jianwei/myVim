@@ -1,4 +1,18 @@
 " YouCompleteMe
+""let g:ycm_filetype_whitelist = { 
+""			\ "c":1,
+""			\ "cpp":1, 
+""			\ "objc":1,
+""			\ "sh":1,
+""			\ "zsh":1,
+""			\ "zimbu":1,
+""			\ }
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
 let g:ycm_collect_identifiers_from_tags_files = 1           " 开启 YCM基于标签引擎
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释与字符串中的内容也用于补全
 let g:ycm_seed_identifiers_with_syntax = 1                  " 语法关键字补全

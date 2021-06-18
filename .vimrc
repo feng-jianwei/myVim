@@ -54,11 +54,8 @@ func SetTitle()
 	"		call append(line(".")+7,"")
 	"	endif
 	"新建文件后，自动定位到文件末尾
-	autocmd BufNewFile * normal G
 endfunc 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"键盘命令
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile * normal G
  
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
@@ -183,8 +180,8 @@ set smartindent
 "自动补全
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
-":inoremap { {<CR>}<ESC>O
-":inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
 :inoremap " ""<ESC>i
