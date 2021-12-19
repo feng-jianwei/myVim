@@ -1,0 +1,6 @@
+
+bundle/*
+!bundle/.gitkeep
+.netrwhist
+
+bundle/rust.vim
