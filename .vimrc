@@ -1,59 +1,38 @@
 set nocompatible
 syntax on
+let python_highlight_all=1
+au Filetype python set tabstop=4
+au Filetype python set softtabstop=4
+au Filetype python set shiftwidth=4
+au Filetype python set textwidth=79
+au Filetype python set expandtab
+au Filetype python set autoindent
+au Filetype python set fileformat=unix
+autocmd Filetype python set foldmethod=indent
+autocmd Filetype python set foldlevel=99
 " vim could execute system function in fish 
 set shell=sh
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rust-lang/rust.vim'
-Plugin 'ycm-core/YouCompleteMe' 
- 
+Plugin 'ycm-core/YouCompleteMe'
+
 Plugin 'preservim/nerdtree'|
             \ Plugin 'Xuyuanp/nerdtree-git-plugin' |
 
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ryanoasis/vim-devicons'
 " 非 github 仓库的插件"
 " Plugin 'git://git.wincent.com/command-t.git'
 " 本地仓库的插件 " 
 call vundle#end()
 
 "插件的设置
-source ~/.vim/settings.vim
-
-"""""新文件标题
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-""autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
-""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-	"如果文件类型为.sh文件 
-	if &filetype == 'sh' 
-		call setline(1, "#!/bin/zsh")
-		call append(line("."), "")
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: fjw") 
-		call append(line(".")+2, "	> Mail: fengjianwei617@gmail.com ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
-		call append(line(".")+5, "")
-	endif
-	if &filetype == 'cpp'
-		call append(line(".")+6, "#include <iostream>")
-    	call append(line(".")+7, "using namespace std;")
-		call append(line(".")+8, "")
-	endif
-	if &filetype == 'c'
-		call append(line(".")+6, "#include <stdio.h>")
-		call append(line(".")+7, "")
-	endif
-	"	if &filetype == 'java'
-	"		call append(line(".")+6,"public class ".expand("%"))
-	"		call append(line(".")+7,"")
-	"	endif
-	"新建文件后，自动定位到文件末尾
-endfunc 
-autocmd BufNewFile * normal G
+source ~/.vim/YCM.vim
+source ~/.vim/fileset.vim
+source ~/.vim/Nerdtree.vim
+source ~/.vim/NerdHighLight.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,7 +73,7 @@ set guioptions-=m           " 隐藏菜单栏
 set foldcolumn=0
 set foldmethod=indent 
 set foldlevel=3 
-set foldenable              " 开始折叠
+"set foldenable              " 开始折叠
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 " 语法高亮
@@ -118,7 +97,7 @@ set smarttab
 " 显示行号
 set number
 " 历史记录数
-set history=1000
+set history=100
 "禁止生成临时文件
 set nobackup
 set noswapfile
@@ -181,7 +160,7 @@ set smartindent
 "自动补全
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
+:inoremap { {}<ESC>i
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
@@ -199,4 +178,5 @@ endfunction
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
-
+highlight Visual  ctermfg=Black	ctermbg=yellow	cterm=bold	guifg=#404040 gui=bold
+set nofoldenable
