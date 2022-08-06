@@ -23,6 +23,9 @@ Plugin 'preservim/nerdtree'|
 
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'Yggdroot/indentLine'
+Plugin 'mileszs/ack.vim'
 " 非 github 仓库的插件"
 " Plugin 'git://git.wincent.com/command-t.git'
 " 本地仓库的插件 " 
@@ -33,6 +36,7 @@ source ~/.vim/YCM.vim
 source ~/.vim/fileset.vim
 source ~/.vim/Nerdtree.vim
 source ~/.vim/NerdHighLight.vim
+source ~/.vim/ACK.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -91,7 +95,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 " 不要用空格代替制表符
-set noexpandtab
+set expandtab
 " 在行和段开始处使用制表符
 set smarttab
 " 显示行号

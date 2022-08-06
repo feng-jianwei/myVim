@@ -4,3 +4,4 @@ bundle/*
 .netrwhist
 
 bundle/rust.vim
+*/pack/*
